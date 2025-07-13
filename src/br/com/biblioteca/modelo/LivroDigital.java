@@ -2,16 +2,14 @@ package br.com.biblioteca.modelo;
 
 public class LivroDigital extends Livro{
     private double tamanhoArquivoEmMb;
+    private String formatoArquivo;
 
-
-    public LivroDigital (String titulo, String autor, Categoria categoriaLivro){
-        super(titulo, autor, categoriaLivro);
-    }
 
     //all args constructor
-    public LivroDigital(String titulo, String autorDoLivro, Categoria categoriaLivro, double tamanhoArquivoEmMb) {
-        super(titulo, autorDoLivro, categoriaLivro);
+    public LivroDigital(String titulo, String autor, Categoria categoriaLivro, double tamanhoArquivoEmMb, String formatoArquivo ) {
+        super(titulo, autor, categoriaLivro);
         this.tamanhoArquivoEmMb = tamanhoArquivoEmMb;
+        this.formatoArquivo = formatoArquivo;
     }
 
     public double getTamanhoArquivoEmMb() {
@@ -20,5 +18,13 @@ public class LivroDigital extends Livro{
 
     public void setTamanhoArquivoEmMb(double tamanhoArquivoEmMb) {
         this.tamanhoArquivoEmMb = tamanhoArquivoEmMb;
+    }
+
+    public String getFormatoArquivo() {
+        return formatoArquivo;
+    }
+
+    public void setFormatoArquivo(String formatoArquivo) {
+        this.formatoArquivo = formatoArquivo;
     }
 }

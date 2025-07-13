@@ -4,5 +4,6 @@ public enum Categoria {
     FICCAO,
     CIENCIA,
     TECNOLOGIA,
-    AUTOAJUDA
+    AUTOAJUDA,
+    OUTROS
 }

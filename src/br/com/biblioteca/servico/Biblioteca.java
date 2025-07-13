@@ -4,6 +4,7 @@ import br.com.biblioteca.modelo.Livro;
 import br.com.biblioteca.modelo.LivroFisico;
 import br.com.biblioteca.modelo.Usuario;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Biblioteca {
@@ -11,15 +12,10 @@ public class Biblioteca {
     private List<Usuario> usuarios;
     private List<Emprestimo> historicoDeEmprestimos;
 
-    public Biblioteca(List<Livro> acervo, List<Usuario> usuarios, List<Emprestimo> historicoDeEmprestimos) {
-        this.acervo = acervo;
-        this.usuarios = usuarios;
-        this.historicoDeEmprestimos = historicoDeEmprestimos;
-    }
-
-    //no args constructor
     public Biblioteca() {
-
+        this.acervo = new ArrayList<>();
+        this.usuarios = new ArrayList<>();
+        this.historicoDeEmprestimos = new ArrayList<>();
     }
 
     public void cadastrarLivro(Livro livro){
@@ -27,7 +23,7 @@ public class Biblioteca {
             System.out.println("Livro não pode ser nulo !");
         } else {
             acervo.add(livro);
-            System.out.println("Livro " + livro.getTitulo() + "adicionado ao acervo.");
+            System.out.println("Livro " + livro.getTitulo() + " adicionado ao acervo.");
         }
     }
 
@@ -36,13 +32,12 @@ public class Biblioteca {
             System.out.println("Usuário não pode ser nulo");
         } else {
             usuarios.add(usuario);
-            System.out.println("Usuário: " + usuario.getNomeUsuario() + "registrado.");
+            System.out.println("Usuário: " + usuario.getNomeUsuario() + " registrado.");
         }
     }
 
     // TODO: implementar metodo para listar livros disponiveis apos o cadastro;
     public void listarLivrosDisponiveis(Livro livro){
-
     }
 
     public void registrarEmprestimo(Usuario usuario, LivroFisico livroFisico){
@@ -51,15 +46,19 @@ public class Biblioteca {
             return;
         }
 
-        livroFisico.emprestar(usuario);
-        historicoDeEmprestimos.add(new Emprestimo());
+        if (livroFisico.isDisponivel()){
+            livroFisico.emprestar(usuario);
+            historicoDeEmprestimos.add(new Emprestimo(livroFisico,usuario));
+        }
     }
 
     public void devolverLivro(LivroFisico livroFisico){
         if(!acervo.contains(livroFisico)){
             System.out.println("Esse livro não faz parte do nosso acervo");
+            return;
         }
 
         livroFisico.devolver();
+        System.out.println("Livro devolvido com sucesso !");
     }
 }

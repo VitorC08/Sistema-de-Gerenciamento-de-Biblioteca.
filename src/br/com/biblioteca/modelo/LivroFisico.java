@@ -4,31 +4,26 @@ import br.com.biblioteca.interfaces.Emprestavel;
 
 public class LivroFisico extends Livro implements Emprestavel {
     private String editora;
-    private int numerDePaginas;
+    private int numeroDePaginas;
     private boolean isDiponivel = true;
 
-    public LivroFisico (String titulo, String autor, Categoria categoriaLivro){
-        super(titulo, autor, categoriaLivro);
-    }
-
     // all args constructor
-    public LivroFisico(String titulo, String autorDoLivro, Categoria categoriaLivro, String editora, int numerDePaginas, boolean isDiponivel) {
-        super(titulo, autorDoLivro, categoriaLivro);
+    public LivroFisico(String titulo, String autor, Categoria categoriaLivro, String editora, int numerDePaginas) {
+        super(titulo, autor, categoriaLivro);
         this.editora = editora;
-        this.numerDePaginas = numerDePaginas;
-        this.isDiponivel = isDiponivel;
+        this.numeroDePaginas = numerDePaginas;
     }
 
     public String getEditora() {return editora;}
 
     public void setEditora(String editora) {this.editora = editora;}
 
-    public int getNumerDePaginas() {
-        return numerDePaginas;
+    public int getNumeroDePaginas() {
+        return numeroDePaginas;
     }
 
-    public void setNumerDePaginas(int numerDePaginas) {
-        this.numerDePaginas = numerDePaginas;
+    public void setNumeroDePaginas(int numeroDePaginas) {
+        this.numeroDePaginas = numeroDePaginas;
     }
 
     @Override
