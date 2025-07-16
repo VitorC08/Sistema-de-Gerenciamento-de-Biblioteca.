@@ -69,6 +69,12 @@ public class Main {
                     }
                     break;
                 }
+
+                case 2: {
+                    biblioteca.listarLivrosDisponiveis();
+                    break;
+                }
+
             }
         } while(opcao != 8);
     }

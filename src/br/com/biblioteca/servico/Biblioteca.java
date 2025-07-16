@@ -36,8 +36,16 @@ public class Biblioteca {
         }
     }
 
-    // TODO: implementar metodo para listar livros disponiveis apos o cadastro;
-    public void listarLivrosDisponiveis(Livro livro){
+    public void listarLivrosDisponiveis(){
+        if(acervo.isEmpty()){
+            System.out.println("O acervo está vazio.");
+            return;
+        }
+
+        System.out.println("=== Livros Cadastrados ===");
+        for (Livro livro : acervo){
+            System.out.println(livro);
+        }
     }
 
     public void registrarEmprestimo(Usuario usuario, LivroFisico livroFisico){

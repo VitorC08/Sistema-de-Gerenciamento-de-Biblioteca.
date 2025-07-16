@@ -41,4 +41,13 @@ public class LivroFisico extends Livro implements Emprestavel {
         System.out.println("O livro " + getTitulo() + "foi devolvido.");
         isDiponivel = true;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "\nTipo: Livro Físico" +
+                "\nEditora: " + getEditora() +
+                "\nNúmero de Páginas: " + getNumeroDePaginas() +
+                "\n";
+    }
 }

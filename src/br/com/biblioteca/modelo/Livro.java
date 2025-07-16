@@ -43,4 +43,12 @@ public abstract class Livro {
     public void setDisponivel(){
         this.disponivel = disponivel;
     }
+
+    @Override
+    public String toString() {
+        return "Titulo: " + getTitulo() +
+                "\nAutor: " + getAutor() +
+                "\nCategoria: " + getCategoriaLivro() +
+                "\nDisponível: " + (isDisponivel() ? "Sim" : "Não");
+    }
 }

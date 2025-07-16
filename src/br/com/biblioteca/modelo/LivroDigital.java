@@ -27,4 +27,13 @@ public class LivroDigital extends Livro{
     public void setFormatoArquivo(String formatoArquivo) {
         this.formatoArquivo = formatoArquivo;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "\nTipo: Livro Digital" +
+                "\nFormato do arquivo: " + getFormatoArquivo() + "MB" +
+                "\nTamanho do arquivo em Mb: " + getTamanhoArquivoEmMb() +
+                "\n";
+    }
 }
