@@ -7,9 +7,9 @@ public abstract class Livro {
     private boolean disponivel = true;
 
     public Livro(String titulo, String autor, Categoria categoriaLivro) {
-        this.titulo = titulo;
-        this.autor = autor;
-        this.categoriaLivro = categoriaLivro;
+        setTitulo(titulo);
+        setAutor(autor);
+        setCategoriaLivro(categoriaLivro);
     }
 
     public String getTitulo() {

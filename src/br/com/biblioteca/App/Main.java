@@ -26,6 +26,7 @@ public class Main {
             System.out.println("7 - Finalizar Sessão.");
 
             opcao = scanner.nextInt();
+            scanner.nextLine();
 
             switch (opcao){
                 case 1 :{
@@ -75,6 +76,21 @@ public class Main {
                     break;
                 }
 
+                case 3:{
+                    System.out.println("Digite o nome do usuário para cadastro: ");
+                    String nomeUsuario = scanner.nextLine().trim();
+
+                    System.out.println("Informe o cpf do usuário para cadastro (apenas números): ");
+                    String cpf = scanner.nextLine().trim();
+
+                    try {
+                        Usuario usuario = new Usuario(nomeUsuario, cpf);
+                        biblioteca.registrarUsuario(usuario);
+                    } catch (IllegalArgumentException e ){
+                        System.out.println("Erro ao cadastrar usuário: " + e.getMessage());
+                    }
+                    break;
+                }
             }
         } while(opcao != 8);
     }
