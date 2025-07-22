@@ -9,8 +9,8 @@ public class Usuario {
     private List<Livro> livrosEmprestados;
 
     public Usuario(String nomeUsuario, String cpf) {
-        this.nomeUsuario = nomeUsuario;
-        this.cpf = cpf;
+        setNomeUsuario(nomeUsuario);
+        setCpf(cpf);
         this.livrosEmprestados = new ArrayList<>();
     }
 
@@ -19,7 +19,10 @@ public class Usuario {
     }
 
     public void setNomeUsuario(String nomeUsuario) {
-        this.nomeUsuario = nomeUsuario;
+        if (nomeUsuario == null || nomeUsuario.trim().isEmpty()){
+            throw new IllegalArgumentException("Nome do usuário não pode ser nulo ou vazio");
+        }
+        this.nomeUsuario = nomeUsuario.trim();
     }
 
     public String getCpf() {
@@ -28,10 +31,14 @@ public class Usuario {
 
     public void setCpf(String cpf) {
         if (cpf == null || cpf.trim().isEmpty()) {
-            throw new IllegalArgumentException("CPF não pode ser vazio");
-        } else {
-            this.cpf = cpf;
+            throw new IllegalArgumentException("CPF não pode ser vazio.");
         }
+
+        if(cpf.length() != 11){
+            throw new IllegalArgumentException("CPF deve der apenas 11 digitos.");
+        }
+        this.cpf = cpf;
+
     }
 
     public List<Livro> getLivrosEmprestados() {
