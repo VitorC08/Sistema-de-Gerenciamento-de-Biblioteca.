@@ -4,12 +4,13 @@ public abstract class Livro {
     private String titulo;
     private String autor;
     private Categoria categoriaLivro;
-    private boolean disponivel = true;
+    private boolean disponivel;
 
     public Livro(String titulo, String autor, Categoria categoriaLivro) {
-        setTitulo(titulo);
-        setAutor(autor);
-        setCategoriaLivro(categoriaLivro);
+        this.titulo = titulo;
+        this.autor = autor;
+        this.categoriaLivro = categoriaLivro;
+        this.disponivel = true;
     }
 
     public String getTitulo() {
@@ -36,11 +37,11 @@ public abstract class Livro {
         this.categoriaLivro = categoriaLivro;
     }
 
-    public boolean isDisponivel(){
+    public boolean isDisponivel() {
         return disponivel;
     }
 
-    public void setDisponivel(){
+    public void setDisponivel(boolean disponivel) {
         this.disponivel = disponivel;
     }
 
