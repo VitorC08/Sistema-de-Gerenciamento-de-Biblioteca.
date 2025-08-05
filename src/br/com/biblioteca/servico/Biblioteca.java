@@ -48,16 +48,33 @@ public class Biblioteca {
         }
     }
 
-    public void registrarEmprestimo(Usuario usuario, LivroFisico livroFisico){
-        if(!acervo.contains(livroFisico)){
-            System.out.println("Esse livro não faz parte do nosso acervo.");
-            return;
+    public boolean registrarEmprestimo(String cpfUsuario, String tituloLivro){
+        Usuario usuario = findUsuarioByCpf(cpfUsuario);
+        if(usuario == null){
+            System.out.println("Usuário com cpf " + cpfUsuario + " não encontrado no sistema");
+            return false;
         }
 
-        if (livroFisico.isDisponivel()){
-            livroFisico.emprestar(usuario);
-            historicoDeEmprestimos.add(new Emprestimo(livroFisico,usuario));
+        Livro livro = findLivroByTitulo(tituloLivro);
+        if(livro == null){
+            System.out.println("Livro com o titulo " + tituloLivro + " não encontrado.");
         }
+
+        if(!livro.isDisponivel()){
+            System.out.println(" O livro " + livro.getTitulo() + " já está emprestado.");
+            return false;
+        }
+
+        Emprestimo emprestimo = new Emprestimo(livro, usuario);
+        historicoDeEmprestimos.add(emprestimo);
+        livro.setDisponivel(false);
+
+        System.out.println("Emprestimo realizado com sucesso !");
+        System.out.println("Livro: " + livro.getTitulo());
+        System.out.println("Usuário: " + usuario.getNomeUsuario());
+        System.out.println("Data: " + emprestimo.getDataEmprestimo());
+
+        return true;
     }
 
     public void devolverLivro(LivroFisico livroFisico){
@@ -68,5 +85,19 @@ public class Biblioteca {
 
         livroFisico.devolver();
         System.out.println("Livro devolvido com sucesso !");
+    }
+
+    public Usuario findUsuarioByCpf(String cpf){
+        return usuarios.stream()
+                .filter(u-> u.getCpf().equals(cpf))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Livro findLivroByTitulo(String titulo){
+        return acervo.stream()
+                .filter(a -> a.getTitulo().equals(titulo))
+                .findFirst()
+                .orElse(null);
     }
 }

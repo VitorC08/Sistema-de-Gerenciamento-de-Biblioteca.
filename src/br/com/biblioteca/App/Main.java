@@ -91,6 +91,20 @@ public class Main {
                     }
                     break;
                 }
+
+                case 4:{
+                    System.out.println("=== Registrar um empréstimo de Livro ===");
+
+                    System.out.println("informe o CPF do usuário (apenas números)");
+                    String cpf = scanner.nextLine().trim();
+
+                    System.out.println("Informe o titulo do livro que deseja para concluir o emprestimo: ");
+                    String titulo = scanner.nextLine().trim();
+
+                    biblioteca.registrarEmprestimo(cpf,titulo);
+
+                    break;
+                }
             }
         } while(opcao != 8);
     }
